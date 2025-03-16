@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Copy, Instagram, Twitter, Facebook, TikTok } from 'lucide-react';
+import { Copy, Instagram, Twitter, Facebook, AtSign } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
 
 interface SocialHandleGeneratorProps {
@@ -130,7 +130,7 @@ const SocialHandleGenerator: React.FC<SocialHandleGeneratorProps> = ({ name }) =
           
           <div>
             <div className="flex items-center mb-2">
-              <TikTok className="h-4 w-4 mr-2" />
+              <AtSign className="h-4 w-4 mr-2" />
               <span className="text-sm font-medium">TikTok</span>
             </div>
             <div className="flex flex-wrap gap-2">

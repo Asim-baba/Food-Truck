@@ -125,7 +125,7 @@ const FoodTruckNameGenerator: React.FC = () => {
   const [showAdvancedOptions, setShowAdvancedOptions] = useState(false);
   const [includeEmoji, setIncludeEmoji] = useState(false);
   const [businessType, setBusinessType] = useState('general');
-  const [nameLength, setNameLength] = useState<[number]>([2]);
+  const [nameLength, setNameLength] = useState<number[]>([2]);
   const [localRegion, setLocalRegion] = useState('');
   
   const conceptInputRef = useRef<HTMLInputElement>(null);
@@ -1020,3 +1020,4 @@ const FoodTruckNameGenerator: React.FC = () => {
 };
 
 export default FoodTruckNameGenerator;
+
