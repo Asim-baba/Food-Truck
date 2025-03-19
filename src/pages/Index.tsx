@@ -1,49 +1,76 @@
 
 import React from 'react';
-import FoodTruckNameGenerator from "@/components/FoodTruckNameGenerator";
+import FoodTruckNameGeneratorMUI from "@/components/FoodTruckNameGeneratorMUI";
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+
+// Create a custom theme
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#16a34a', // Green to match the original Tailwind primary
+      light: '#dcfce7',
+    },
+    secondary: {
+      main: '#4f46e5',
+    },
+    background: {
+      default: '#f9fafb',
+      paper: '#ffffff',
+    },
+  },
+  typography: {
+    fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
+    h3: {
+      fontSize: '2.5rem',
+      '@media (max-width:600px)': {
+        fontSize: '2rem',
+      },
+    },
+  },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          textTransform: 'none',
+          borderRadius: '0.375rem',
+        },
+      },
+    },
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          borderRadius: '0.75rem',
+        },
+      },
+    },
+  },
+});
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background relative overflow-hidden">
-      {/* Background pattern */}
-      <div className="absolute inset-0 z-0 opacity-5">
-        <div className="absolute top-0 left-0 right-0 h-64 bg-primary/10"></div>
-        <div className="absolute bottom-0 left-0 right-0 h-64 bg-primary/5"></div>
-        <div className="grid grid-cols-10 h-full w-full">
-          {Array.from({ length: 100 }).map((_, i) => (
-            <div 
-              key={i} 
-              className="rounded-full bg-primary/10 w-8 h-8"
-              style={{
-                position: 'absolute',
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                opacity: Math.random() * 0.3,
-                transform: `scale(${Math.random() * 2 + 0.5})`,
-              }}
-            ></div>
-          ))}
-        </div>
-      </div>
-      
-      {/* Content */}
-      <div className="relative z-10">
-        <header className="py-4 px-6 text-center">
-          <a href="https://foodtechnologylabs.com" className="text-primary font-semibold hover:underline">
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <div>
+        <header style={{ padding: '1rem 1.5rem', textAlign: 'center' }}>
+          <a 
+            href="https://foodtechnologylabs.com" 
+            style={{ color: '#16a34a', fontWeight: 600, textDecoration: 'none' }}
+          >
             FoodTechnologyLabs.com
           </a>
         </header>
         
         <main>
-          <FoodTruckNameGenerator />
+          <FoodTruckNameGeneratorMUI />
         </main>
         
-        <footer className="py-6 text-center text-sm text-muted-foreground">
+        <footer style={{ padding: '1.5rem', textAlign: 'center', fontSize: '0.875rem', color: '#6b7280' }}>
           <p>© {new Date().getFullYear()} Food Technology Labs. All rights reserved.</p>
-          <p className="mt-1">The ultimate resource for food truck entrepreneurs.</p>
+          <p style={{ marginTop: '0.25rem' }}>The ultimate resource for food truck entrepreneurs.</p>
         </footer>
       </div>
-    </div>
+    </ThemeProvider>
   );
 };
 
